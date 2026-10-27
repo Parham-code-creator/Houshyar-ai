@@ -846,12 +846,8 @@
             const text = input.value.trim();
             if (!text) return;
 
-            const apiKey = localStorage.getItem('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');
-            if (!apiKey) {
-                alert('لطفاً ابتدا کلید Groq API خود را در بخش تنظیمات وارد کنید.');
-                openSettingsModal();
-                return;
-            }
+            // قرار گرفتن کلید API به صورت پیش‌فرض در کد
+            const apiKey = "gsk_کلید_ایپای_شما_اینجا"; 
 
             const quotaStatus = checkUserQuota('msg');
             if (!quotaStatus.allowed) { alert(quotaStatus.message); if (!currentUser) openAuthModal(); return; }
