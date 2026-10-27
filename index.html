@@ -35,12 +35,9 @@
     <aside id="sidebar" class="w-72 bg-zinc-900 border-l border-zinc-800 flex flex-col justify-between transition-all duration-300 z-20">
         <div class="flex-1 flex flex-col min-h-0">
             <div class="p-4 flex gap-2">
-                <button onclick="newChat()" class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 py-2.5 px-3 rounded-xl flex items-center justify-between text-sm transition font-medium">
+                <button onclick="newChat()" class="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/60 py-2.5 px-3 rounded-xl flex items-center justify-between text-sm transition font-medium">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-plus text-indigo-400"></i> گفتگوی جدید</span>
                     <i class="fa-regular fa-pen-to-square text-zinc-400"></i>
-                </button>
-                <button onclick="openSettingsModal()" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700/60 p-2.5 rounded-xl transition" title="تنظیمات API Key">
-                    <i class="fa-solid fa-gear"></i>
                 </button>
             </div>
             
@@ -266,27 +263,6 @@
                         ارسال فاکتور جهت بررسی و فعال‌سازی
                     </button>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- پنجره تنظیمات API Key -->
-    <div id="settings-modal" style="display: none;" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-4">
-            <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 class="text-base font-bold text-zinc-100 flex items-center gap-2">
-                    <i class="fa-solid fa-key text-indigo-400"></i> تنظیمات Groq API Key
-                </h3>
-                <button onclick="closeSettingsModal()" class="text-zinc-400 hover:text-zinc-100"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <p class="text-xs text-zinc-400 leading-relaxed">
-                کلید API خود را وارد کنید. کلید شما فقط در حافظه مرورگر خودتان ذخیره می‌شود و هیچ کجا منتشر نخواهد شد.
-            </p>
-            <div>
-                <input type="password" id="api-key-input" placeholder="gsk_..." class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-indigo-500">
-            </div>
-            <div class="flex justify-end gap-2 pt-2">
-                <button onclick="saveApiKey()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-medium transition">ذخیره کلید</button>
             </div>
         </div>
     </div>
@@ -846,7 +822,7 @@
             const text = input.value.trim();
             if (!text) return;
 
-            // استفاده مستقیم و اجباری از کلید API شما
+            // قرار گرفتن مستقیم کلید API شما
             const apiKey = "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";
 
             const quotaStatus = checkUserQuota('msg');
@@ -944,22 +920,6 @@
 
             container.scrollTop = container.scrollHeight;
             saveCurrentChatToStorage(container.innerHTML, text);
-        }
-
-        function openSettingsModal() {
-            const savedKey = localStorage.getItem('houshyar_groq_api_key') || '';
-            document.getElementById('api-key-input').value = savedKey;
-            document.getElementById('settings-modal').style.display = 'flex';
-        }
-
-        function closeSettingsModal() { document.getElementById('settings-modal').style.display = 'none'; }
-
-        function saveApiKey() {
-            const key = document.getElementById('api-key-input').value.trim();
-            if (!key) { alert('لطفاً یک کلید معتبر وارد کنید.'); return; }
-            localStorage.setItem('houshyar_groq_api_key', key);
-            closeSettingsModal();
-            alert('کلید API با موفقیت ذخیره شد!');
         }
 
         function sendPreset(text) {
