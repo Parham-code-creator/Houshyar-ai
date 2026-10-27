@@ -846,8 +846,12 @@
             const text = input.value.trim();
             if (!text) return;
 
-            // قرار گرفتن کلید API به صورت پیش‌فرض در کد
-            const apiKey = "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"; 
+            // قرار گرفتن کلید API به صورت خودکار در کد
+            let apiKey = localStorage.getItem('houshyar_groq_api_key');
+            if (!apiKey) {
+                apiKey = "gsk_3LGzlGA13Sl4vMkoofO3fVCtuNi";
+                localStorage.setItem('houshyar_groq_api_key', apiKey);
+            }
 
             const quotaStatus = checkUserQuota('msg');
             if (!quotaStatus.allowed) { alert(quotaStatus.message); if (!currentUser) openAuthModal(); return; }
