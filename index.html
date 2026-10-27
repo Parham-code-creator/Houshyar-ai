@@ -789,51 +789,68 @@
                 </div>`;
             container.scrollTop = container.scrollHeight;
 
-            // استفاده از Pollinations API با پارامترهای پایدار و تصادفی‌ساز برای جلوگیری از کَش شدن
-            const randomSeed = Math.floor(Math.random() * 10000000);
-            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(text)}?width=1024&height=1024&nologo=true&seed=${randomSeed}`;
+            // ساخت آدرس‌های هوشمند با سوئیچ رو مدل‌های خلوت‌تر (flux / turbo / default) برای دور زدن شلوغی سرور
+            const seed = Math.floor(Math.random() * 999999);
+            const encodedPrompt = encodeURIComponent(text);
+            
+            // لیست لینک‌های جایگزین جهت جلوگیری از خطای At its limit right now
+            const imageUrls = [
+                `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&model=flux&seed=${seed}`,
+                `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&model=turbo&seed=${seed}`,
+                `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&seed=${seed}`
+            ];
 
-            // تست بارگذاری کامل تصویر قبل از نمایش به کاربر
-            const img = new Image();
-            img.crossOrigin = "anonymous";
-            img.onload = () => {
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
+            let currentTry = 0;
 
-                incrementQuota('img');
+            function tryLoadImage(url) {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = () => {
+                    const loadingElement = document.getElementById(loadingId);
+                    if (loadingElement) loadingElement.remove();
 
-                container.innerHTML += `
-                    <div class="flex items-start gap-4 max-w-3xl mx-auto">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
-                        <div class="bg-zinc-900 border border-zinc-800 text-zinc-200 p-3 rounded-2xl rounded-br-sm text-sm max-w-[85%] leading-relaxed shadow-sm space-y-3">
-                            <div class="text-xs text-zinc-400">تصویر بر اساس توصیف شما ساخته شد:</div>
-                            <img src="${imageUrl}" class="rounded-xl w-full max-h-[450px] object-cover shadow-lg border border-zinc-800" alt="تصویر ساخته شده هوش مصنوعی" />
-                            <div class="flex items-center gap-2">
-                                <a href="${imageUrl}" target="_blank" download="houshyar_ai_image.jpg" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 font-medium shadow">
-                                    <i class="fa-solid fa-download"></i> دانلود تصویر با کیفیت اصلی
-                                </a>
+                    incrementQuota('img');
+
+                    container.innerHTML += `
+                        <div class="flex items-start gap-4 max-w-3xl mx-auto">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
+                            <div class="bg-zinc-900 border border-zinc-800 text-zinc-200 p-3 rounded-2xl rounded-br-sm text-sm max-w-[85%] leading-relaxed shadow-sm space-y-3">
+                                <div class="text-xs text-zinc-400">تصویر ساخته‌شده:</div>
+                                <img src="${url}" class="rounded-xl w-full max-h-[450px] object-cover shadow-lg border border-zinc-800" alt="تصویر ساخته شده هوش مصنوعی" />
+                                <div class="flex items-center gap-2">
+                                    <a href="${url}" target="_blank" download="houshyar_ai.jpg" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 font-medium shadow">
+                                        <i class="fa-solid fa-download"></i> دانلود تصویر کیفیت اصلی
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>`;
-                container.scrollTop = container.scrollHeight;
-                saveCurrentChatToStorage(container.innerHTML, 'تصویر: ' + text);
-            };
+                        </div>`;
+                    container.scrollTop = container.scrollHeight;
+                    saveCurrentChatToStorage(container.innerHTML, 'تصویر: ' + text);
+                };
 
-            img.onerror = () => {
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
+                img.onerror = () => {
+                    currentTry++;
+                    if (currentTry < imageUrls.length) {
+                        tryLoadImage(imageUrls[currentTry]);
+                    } else {
+                        const loadingElement = document.getElementById(loadingId);
+                        if (loadingElement) loadingElement.remove();
 
-                container.innerHTML += `
-                    <div class="flex items-start gap-4 max-w-3xl mx-auto">
-                        <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-xs font-bold text-white shrink-0">خطا</div>
-                        <div class="bg-red-950/50 border border-red-900/50 text-red-200 px-4 py-3 rounded-2xl text-sm">
-                            خطا در دریافت تصویر از سرور. لطفاً مجدداً تلاش کنید.
-                        </div>
-                    </div>`;
-                container.scrollTop = container.scrollHeight;
-            };
+                        container.innerHTML += `
+                            <div class="flex items-start gap-4 max-w-3xl mx-auto">
+                                <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-xs font-bold text-white shrink-0">خطا</div>
+                                <div class="bg-red-950/50 border border-red-900/50 text-red-200 px-4 py-3 rounded-2xl text-sm">
+                                    سرور ساخت تصویر در حال حاضر بسیار شلوغ است. لطفاً چند ثانیه دیگر دوباره امتحان کنید.
+                                </div>
+                            </div>`;
+                        container.scrollTop = container.scrollHeight;
+                    }
+                };
 
-            img.src = imageUrl;
+                img.src = url;
+            }
+
+            tryLoadImage(imageUrls[0]);
         }
 
         async function sendMessage() {
