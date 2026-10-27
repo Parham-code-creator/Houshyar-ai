@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هوش مصنوعی کاوش (Kavosh AI)</title>
+    <title>هوش مصنوعی هوشیار (Houshyar AI)</title>
     <!-- فونت وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <!-- Tailwind CSS -->
@@ -88,7 +88,7 @@
 
         <div class="p-4 border-t border-zinc-800 flex items-center justify-between shrink-0">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white text-sm" id="user-avatar">ک</div>
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white text-sm" id="user-avatar">هـ</div>
                 <div>
                     <div class="text-sm font-medium text-zinc-200" id="user-display-name">کاربر مهمان</div>
                     <div class="text-xs text-zinc-500" id="user-status-text">نیاز به ورود</div>
@@ -107,7 +107,7 @@
             <div class="flex items-center gap-3">
                 <button onclick="toggleSidebar()" class="text-zinc-400 hover:text-zinc-200 p-2"><i class="fa-solid fa-bars text-lg"></i></button>
                 <div class="flex items-center gap-2">
-                    <span class="font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 text-lg">کاوش AI</span>
+                    <span class="font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 text-lg">هوشیار</span>
                     <span class="text-xs bg-zinc-800 text-zinc-300 px-2 py-0.5 rounded-md border border-zinc-700">هوشمند + عکس‌ساز</span>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 <div class="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20 text-2xl text-white">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                 </div>
-                <h1 class="text-2xl md:text-3xl font-bold text-zinc-100">امروز چطور می‌توانم کمکتان کنم؟</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-zinc-100">سلام! من هوشیار هستم، چطور می‌توانم کمکتان کنم؟</h1>
                 <p class="text-sm text-zinc-400">می‌توانید چت متنی، چت صوتی یا ساخت تصویر اختصاصی انجام دهید.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full pt-4 text-right">
@@ -174,7 +174,7 @@
         <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
                 <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
-                    <i class="fa-solid fa-crown text-amber-400"></i> خرید اشتراک ویژه کاوش AI
+                    <i class="fa-solid fa-crown text-amber-400"></i> خرید اشتراک ویژه هوشیار
                 </h3>
                 <button onclick="closePlansModal()" class="text-zinc-400 hover:text-zinc-100"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
@@ -337,7 +337,7 @@
         <div class="bg-zinc-900 border border-amber-500/30 rounded-2xl max-w-3xl w-full p-6 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
                 <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
-                    <i class="fa-solid fa-crown text-amber-400"></i> پنل مدیریت کاوش AI
+                    <i class="fa-solid fa-crown text-amber-400"></i> پنل مدیریت هوشیار
                 </h3>
                 <button onclick="closeAdminModal()" class="text-zinc-400 hover:text-zinc-100"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
@@ -385,9 +385,9 @@
         const DEFAULT_IMG_QUOTA = 0;
 
         try {
-            usersDB = JSON.parse(localStorage.getItem('kavosh_users')) || [];
-            currentUser = JSON.parse(localStorage.getItem('kavosh_current_user')) || null;
-            receiptsDB = JSON.parse(localStorage.getItem('kavosh_receipts')) || [];
+            usersDB = JSON.parse(localStorage.getItem('houshyar_users')) || [];
+            currentUser = JSON.parse(localStorage.getItem('houshyar_current_user')) || null;
+            receiptsDB = JSON.parse(localStorage.getItem('houshyar_receipts')) || [];
         } catch (e) {}
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -486,7 +486,7 @@
                     <div class="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20 text-2xl text-white">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
-                    <h1 class="text-2xl md:text-3xl font-bold text-zinc-100">امروز چطور می‌توانم کمکتان کنم؟</h1>
+                    <h1 class="text-2xl md:text-3xl font-bold text-zinc-100">سلام! من هوشیار هستم، چطور می‌توانم کمکتان کنم؟</h1>
                     <p class="text-sm text-zinc-400">می‌توانید چت متنی، چت صوتی یا ساخت تصویر اختصاصی انجام دهید.</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full pt-4 text-right">
@@ -505,7 +505,7 @@
         function loadUserChats() {
             if (!currentUser) return;
             try {
-                chatsDB = JSON.parse(localStorage.getItem(`kavosh_chats_${currentUser.username}`)) || [];
+                chatsDB = JSON.parse(localStorage.getItem(`houshyar_chats_${currentUser.username}`)) || [];
             } catch(e) { chatsDB = []; }
             renderChatHistoryList();
         }
@@ -526,7 +526,7 @@
             else chatsDB.unshift(chatObj);
 
             try {
-                localStorage.setItem(`kavosh_chats_${currentUser.username}`, JSON.stringify(chatsDB));
+                localStorage.setItem(`houshyar_chats_${currentUser.username}`, JSON.stringify(chatsDB));
             } catch(e) {}
             renderChatHistoryList();
         }
@@ -564,7 +564,7 @@
             if (confirm('آیا از حذف این گفتگو اطمینان دارید؟')) {
                 chatsDB = chatsDB.filter(c => c.id !== chatId);
                 try {
-                    localStorage.setItem(`kavosh_chats_${currentUser.username}`, JSON.stringify(chatsDB));
+                    localStorage.setItem(`houshyar_chats_${currentUser.username}`, JSON.stringify(chatsDB));
                 } catch(e) {}
                 renderChatHistoryList();
                 if (currentChatId === chatId) newChat();
@@ -576,7 +576,7 @@
             if (chatsDB.length === 0) { alert('هیچ گفتگویی برای پاک کردن وجود ندارد.'); return; }
             if (confirm('آیا از پاک کردن تمامی گفتگوهای اخیر اطمینان دارید؟')) {
                 chatsDB = [];
-                try { localStorage.removeItem(`kavosh_chats_${currentUser.username}`); } catch(e) {}
+                try { localStorage.removeItem(`houshyar_chats_${currentUser.username}`); } catch(e) {}
                 renderChatHistoryList();
                 newChat();
                 alert('تمام گفتگوهای اخیر با موفقیت پاک شدند.');
@@ -585,7 +585,7 @@
 
         function getUserQuotaData() {
             const userId = currentUser ? currentUser.username : 'guest';
-            const quotaKey = `kavosh_quota_${userId}`;
+            const quotaKey = `houshyar_quota_${userId}`;
             let data = null;
             try { data = JSON.parse(localStorage.getItem(quotaKey)); } catch (e) {}
 
@@ -713,7 +713,7 @@
                 };
 
                 receiptsDB.push(receiptObj);
-                try { localStorage.setItem('kavosh_receipts', JSON.stringify(receiptsDB)); } catch(e) {}
+                try { localStorage.setItem('houshyar_receipts', JSON.stringify(receiptsDB)); } catch(e) {}
 
                 alert('فاکتور شما با موفقیت ارسال شد و پس از بررسی توسط مدیر فعال می‌گردد.');
                 closePlansModal();
@@ -761,16 +761,16 @@
             const targetUser = usersDB.find(u => u.username === rec.username);
             if (targetUser) {
                 targetUser.tier = rec.planName;
-                try { localStorage.setItem('kavosh_users', JSON.stringify(usersDB)); } catch(e) {}
+                try { localStorage.setItem('houshyar_users', JSON.stringify(usersDB)); } catch(e) {}
             }
 
             if (currentUser && currentUser.username === rec.username) {
                 currentUser.tier = rec.planName;
-                try { localStorage.setItem('kavosh_current_user', JSON.stringify(currentUser)); } catch(e) {}
+                try { localStorage.setItem('houshyar_current_user', JSON.stringify(currentUser)); } catch(e) {}
                 updateQuotaUI();
             }
 
-            try { localStorage.setItem('kavosh_receipts', JSON.stringify(receiptsDB)); } catch(e) {}
+            try { localStorage.setItem('houshyar_receipts', JSON.stringify(receiptsDB)); } catch(e) {}
             alert(`اشتراک ${rec.planName} برای کاربر ${rec.username} با موفقیت فعال شد!`);
             renderAdminReceipts();
         }
@@ -806,9 +806,9 @@
             const loadingId = 'loading-' + Date.now();
             container.innerHTML += `
                 <div id="${loadingId}" class="flex items-start gap-4 max-w-3xl mx-auto">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">ک</div>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
                     <div class="bg-zinc-900 border border-zinc-800 text-zinc-400 px-4 py-3 rounded-2xl rounded-br-sm text-sm flex items-center gap-2">
-                        <i class="fa-solid fa-circle-notch animate-spin"></i> کاوش در حال خَلق تصویر شماست...
+                        <i class="fa-solid fa-circle-notch animate-spin"></i> هوشیار در حال خَلق تصویر شماست...
                     </div>
                 </div>`;
             container.scrollTop = container.scrollHeight;
@@ -824,7 +824,7 @@
 
                 container.innerHTML += `
                     <div class="flex items-start gap-4 max-w-3xl mx-auto">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">ک</div>
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
                         <div class="bg-zinc-900 border border-zinc-800 text-zinc-200 p-3 rounded-2xl rounded-br-sm text-sm max-w-[85%] leading-relaxed shadow-sm space-y-2">
                             <img src="${imageUrl}" class="rounded-xl w-full max-h-96 object-cover shadow-md" alt="تصویر ساخته شده" />
                             <a href="${imageUrl}" target="_blank" download class="inline-block bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs px-3 py-1.5 rounded-lg transition">دانلود تصویر کیفیت اصلی</a>
@@ -846,7 +846,7 @@
             const text = input.value.trim();
             if (!text) return;
 
-            const apiKey = localStorage.getItem('kavosh_groq_api_key');
+            const apiKey = localStorage.getItem('houshyar_groq_api_key');
             if (!apiKey) {
                 alert('لطفاً ابتدا کلید Groq API خود را در بخش تنظیمات وارد کنید.');
                 openSettingsModal();
@@ -874,9 +874,9 @@
             const loadingId = 'loading-' + Date.now();
             container.innerHTML += `
                 <div id="${loadingId}" class="flex items-start gap-4 max-w-3xl mx-auto">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">ک</div>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
                     <div class="bg-zinc-900 border border-zinc-800 text-zinc-400 px-4 py-3 rounded-2xl rounded-br-sm text-sm flex items-center gap-2">
-                        <i class="fa-solid fa-circle-notch animate-spin"></i> کاوش در حال فکر کردن...
+                        <i class="fa-solid fa-circle-notch animate-spin"></i> هوشیار در حال فکر کردن...
                     </div>
                 </div>`;
             container.scrollTop = container.scrollHeight;
@@ -900,7 +900,10 @@
                         },
                         body: JSON.stringify({
                             model: modelName,
-                            messages: [{ role: "user", content: text }]
+                            messages: [
+                                { role: "system", content: "تو هوشیار (Houshyar) هستی، یک دستیار هوش مصنوعی فارسی هوشمند، مؤدب و کارآمد." },
+                                { role: "user", content: text }
+                            ]
                         })
                     });
 
@@ -925,7 +928,7 @@
                 const msgId = 'msg-' + Date.now();
                 container.innerHTML += `
                     <div class="flex items-start gap-4 max-w-3xl mx-auto">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">ک</div>
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-md">هـ</div>
                         <div class="bg-zinc-900 border border-zinc-800 text-zinc-200 px-4 py-3 rounded-2xl rounded-br-sm text-sm max-w-[85%] leading-relaxed shadow-sm whitespace-pre-line relative group">
                             <span id="${msgId}">${escapeHtml(aiReply)}</span>
                             <button onclick="speakText(document.getElementById('${msgId}').innerText)" class="mt-2 text-zinc-500 hover:text-indigo-400 text-xs flex items-center gap-1 transition">
@@ -948,7 +951,7 @@
         }
 
         function openSettingsModal() {
-            const savedKey = localStorage.getItem('kavosh_groq_api_key') || '';
+            const savedKey = localStorage.getItem('houshyar_groq_api_key') || '';
             document.getElementById('api-key-input').value = savedKey;
             document.getElementById('settings-modal').style.display = 'flex';
         }
@@ -958,7 +961,7 @@
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
             if (!key) { alert('لطفاً یک کلید معتبر وارد کنید.'); return; }
-            localStorage.setItem('kavosh_groq_api_key', key);
+            localStorage.setItem('houshyar_groq_api_key', key);
             closeSettingsModal();
             alert('کلید API با موفقیت ذخیره شد!');
         }
@@ -1010,10 +1013,10 @@
 
             const newUser = { username, password, isAdmin: false, tier: 'free' };
             usersDB.push(newUser);
-            try { localStorage.setItem('kavosh_users', JSON.stringify(usersDB)); } catch(e) {}
+            try { localStorage.setItem('houshyar_users', JSON.stringify(usersDB)); } catch(e) {}
             
             currentUser = newUser;
-            try { localStorage.setItem('kavosh_current_user', JSON.stringify(currentUser)); } catch(e) {}
+            try { localStorage.setItem('houshyar_current_user', JSON.stringify(currentUser)); } catch(e) {}
 
             updateUIForUser(username, false);
             updateQuotaUI();
@@ -1030,7 +1033,7 @@
 
             if (username === 'parham' && password === '13951395') {
                 currentUser = { username: 'parham', isAdmin: true, tier: 'مدیر' };
-                try { localStorage.setItem('kavosh_current_user', JSON.stringify(currentUser)); } catch(e) {}
+                try { localStorage.setItem('houshyar_current_user', JSON.stringify(currentUser)); } catch(e) {}
                 updateUIForUser('parham (مدیر)', true);
                 updateQuotaUI();
                 loadUserChats();
@@ -1044,7 +1047,7 @@
             if (!user) { alert('نام کاربری یا رمز عبور اشتباه است!'); return; }
 
             currentUser = user;
-            try { localStorage.setItem('kavosh_current_user', JSON.stringify(currentUser)); } catch(e) {}
+            try { localStorage.setItem('houshyar_current_user', JSON.stringify(currentUser)); } catch(e) {}
 
             updateUIForUser(user.username, false);
             updateQuotaUI();
@@ -1075,10 +1078,10 @@
             currentUser = null;
             chatsDB = [];
             currentChatId = null;
-            try { localStorage.removeItem('kavosh_current_user'); } catch(e) {}
+            try { localStorage.removeItem('houshyar_current_user'); } catch(e) {}
             document.getElementById('user-display-name').innerText = "کاربر مهمان";
             document.getElementById('user-status-text').innerText = "نیاز به ورود";
-            document.getElementById('user-avatar').innerText = "ک";
+            document.getElementById('user-avatar').innerText = "هـ";
             document.getElementById('auth-btn').innerHTML = `<i class="fa-solid fa-user"></i> ورود / ثبت‌نام`;
             document.getElementById('admin-panel-btn').style.display = 'none';
             document.getElementById('logout-btn').style.display = 'none';
@@ -1111,7 +1114,7 @@
         function deleteUser(index) {
             if (confirm('آیا از حذف این کاربر اطمینان دارید؟')) {
                 usersDB.splice(index, 1);
-                try { localStorage.setItem('kavosh_users', JSON.stringify(usersDB)); } catch(e) {}
+                try { localStorage.setItem('houshyar_users', JSON.stringify(usersDB)); } catch(e) {}
                 renderAdminUsersList();
             }
         }
